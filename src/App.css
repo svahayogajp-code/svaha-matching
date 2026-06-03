@@ -173,3 +173,68 @@ h2 {
   padding: 8px 0;
   font-family: 'Noto Serif JP', serif;
 }
+
+.class-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.class-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 14px 18px;
+  text-decoration: none;
+  color: var(--dark);
+  font-size: 13px;
+  line-height: 1.8;
+  white-space: pre-line;
+  transition: all 0.15s;
+}
+
+.class-card:hover {
+  border-color: var(--teal);
+  background: #f5fbfb;
+}
+
+.class-card-arrow {
+  color: var(--teal);
+  margin-left: 12px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.msg3 {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.8;
+  margin: 8px 0 4px;
+  white-space: pre-line;
+}
+
+.cta-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.personal-link {
+  font-size: 12px;
+  color: var(--mid);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+}
+
+.personal-link:hover {
+  color: var(--teal);
+  border-color: var(--teal);
+}

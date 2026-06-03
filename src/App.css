@@ -114,11 +114,20 @@ h2 {
   border-color: var(--teal);
 }
 
-.result-label {
-  font-size: 11px;
-  letter-spacing: 0.3em;
+.result-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
   color: var(--teal);
   margin-bottom: 20px;
+}
+
+.class-link-note {
+  font-size: 11px;
+  color: var(--mid);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
 }
 
 .msg {

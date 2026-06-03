@@ -235,8 +235,9 @@ export default function App() {
 
         {result && (
           <div className="result">
-            <p className="result-label">YOUR CLASS</p>
+            <h2 className="result-heading">YOUR CLASS</h2>
             <div className="msg msg1">{result.msg1}</div>
+            <p className="class-link-note">各クラス名をタップすると詳細をご確認いただけます</p>
 
             {result.classes && <ClassCards classes={result.classes} />}
             {result.msg3 && <div className="msg msg3">{result.msg3}</div>}
@@ -245,8 +246,8 @@ export default function App() {
             {result.classes3 && <ClassCards classes={result.classes3} />}
 
             <div className="cta-area">
-              <a href={URLS.groupLesson} target="_blank" rel="noreferrer" className="cta-btn">
-                グループレッスンのご予約はこちら
+              <a href={`https://page.line.me/680lrabz?ref=classmatching-${resultKey}`} target="_blank" rel="noreferrer" className="cta-btn">
+                LINEでお問い合わせ・ご相談はこちら
               </a>
               <a href={URLS.personal} target="_blank" rel="noreferrer" className="personal-link">
                 パーソナルセッションについてはこちら

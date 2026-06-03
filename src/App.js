@@ -165,6 +165,11 @@ export default function App() {
     if (option.next.startsWith("result_")) {
       setResultKey(option.next);
       setCurrent(null);
+      if (window.gtag) {
+        window.gtag('event', 'class_matched', {
+          result_key: option.next.replace('result_', ''),
+        });
+      }
     } else {
       setCurrent(option.next);
     }

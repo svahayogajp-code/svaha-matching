@@ -223,17 +223,27 @@ export default function App() {
             <h2>{currentQ.text}</h2>
             {currentQ.sub && <p className="sub">{currentQ.sub}</p>}
             <div className="options">
-              {currentQ.options.map((opt, i) => (
-                <button
-                  key={i}
-                  onClick={() => choose(opt)}
-                  onMouseEnter={() => setHover(i)}
-                  onMouseLeave={() => setHover(null)}
-                  className={`option-btn${hover === i ? " hovered" : ""}`}
-                >
-                  {opt.label}
-                </button>
-              ))}
+              {currentQ.options.map((opt, i) => {
+                let touchStartY = 0;
+                return (
+                  <button
+                    key={i}
+                    onTouchStart={(e) => { touchStartY = e.touches[0].clientY; }}
+                    onTouchEnd={(e) => {
+                      const diff = Math.abs(e.changedTouches[0].clientY - touchStartY);
+                      if (diff < 10) choose(opt);
+                    }}
+                    onClick={(e) => {
+                      if (e.pointerType !== 'touch') choose(opt);
+                    }}
+                    onMouseEnter={() => setHover(i)}
+                    onMouseLeave={() => setHover(null)}
+                    className={`option-btn${hover === i ? " hovered" : ""}`}
+                  >
+                    {opt.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
         )}

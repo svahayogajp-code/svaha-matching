@@ -165,11 +165,6 @@ export default function App() {
     if (option.next.startsWith("result_")) {
       setResultKey(option.next);
       setCurrent(null);
-      if (window.gtag) {
-        window.gtag('event', 'class_matched', {
-          result_key: option.next.replace('result_', ''),
-        });
-      }
     } else {
       setCurrent(option.next);
     }
@@ -230,6 +225,7 @@ export default function App() {
                     key={i}
                     onTouchStart={(e) => { touchStartY = e.touches[0].clientY; }}
                     onTouchEnd={(e) => {
+                      e.preventDefault();
                       const diff = Math.abs(e.changedTouches[0].clientY - touchStartY);
                       if (diff < 10) choose(opt);
                     }}

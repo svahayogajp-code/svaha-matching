@@ -225,17 +225,22 @@ export default function App() {
             <div className="options">
               {currentQ.options.map((opt, i) => {
                 let touchStartY = 0;
+                let touchHandled = false;
                 return (
                   <button
                     key={i}
-                    onTouchStart={(e) => { touchStartY = e.touches[0].clientY; }}
+                    onTouchStart={(e) => { touchStartY = e.touches[0].clientY; touchHandled = false; }}
                     onTouchEnd={(e) => {
-                      e.preventDefault();
                       const diff = Math.abs(e.changedTouches[0].clientY - touchStartY);
-                      if (diff < 10) choose(opt);
+                      if (diff < 10) {
+                        e.preventDefault();
+                        touchHandled = true;
+                        choose(opt);
+                      }
                     }}
-                    onClick={(e) => {
-                      if (e.pointerType !== 'touch') choose(opt);
+                    onClick={() => {
+                      if (!touchHandled) choose(opt);
+                      touchHandled = false;
                     }}
                     onMouseEnter={() => setHover(i)}
                     onMouseLeave={() => setHover(null)}

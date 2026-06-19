@@ -2,14 +2,14 @@ import { useState } from "react";
 import "./App.css";
 
 const URLS = {
-  hatha101: "https://www.svaha-yoga.com/service-page/101",
-  hathaBasic: "https://www.svaha-yoga.com/service-page/basic",
-  hathaForAll: "https://www.svaha-yoga.com/service-page/forall",
-  flowMeditation: "https://www.svaha-yoga.com/service-page/meditation",
-  gentleFlow: "https://www.svaha-yoga.com/service-page/gentleflow",
-  breatheReset: "https://www.svaha-yoga.com/service-page/breathe-reset",
-  groupLesson: "https://www.svaha-yoga.com/grouplesson",
-  personal: "https://www.svaha-yoga.com/personal",
+  hatha101: "https://www.svaha-yoga.com/service-page/101?ref=classmatching",
+  hathaBasic: "https://www.svaha-yoga.com/service-page/basic?ref=classmatching",
+  hathaForAll: "https://www.svaha-yoga.com/service-page/forall?ref=classmatching",
+  flowMeditation: "https://www.svaha-yoga.com/service-page/meditation?ref=classmatching",
+  gentleFlow: "https://www.svaha-yoga.com/service-page/gentleflow?ref=classmatching",
+  breatheReset: "https://www.svaha-yoga.com/service-page/breathe-reset?ref=classmatching",
+  groupLesson: "https://www.svaha-yoga.com/grouplesson?ref=classmatching",
+  personal: "https://www.svaha-yoga.com/personal?ref=classmatching",
 };
 
 const questions = [
@@ -165,6 +165,11 @@ export default function App() {
     if (option.next.startsWith("result_")) {
       setResultKey(option.next);
       setCurrent(null);
+      if (window.gtag) {
+        window.gtag('event', 'class_matched', {
+          result_key: option.next.replace('result_', ''),
+        });
+      }
     } else {
       setCurrent(option.next);
     }
